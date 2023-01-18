@@ -6,9 +6,13 @@
   <meta charset="UTF-8">
   <title>Dice game</title>
 </head>
+
+<header th:fragment="header">
+  <div th:insert="partials/navbar.html :: navbar"></div>
+  <h1>dice roll</h1>
+</header>
 <body>
 
-<h1> Dice</h1>
 <p>choose a number 1-6</p>
 
 
@@ -32,4 +36,5 @@
 <p>DO the numbers match? <span th:text="${guess}"></span>!</p>
 
 </body>
+<div th:insert="partials/footer.html :: footer"></div>
 </html>
