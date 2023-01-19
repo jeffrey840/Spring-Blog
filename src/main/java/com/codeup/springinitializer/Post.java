@@ -1,17 +1,23 @@
 package com.codeup.springinitializer;
 
-public class Post {
 
+import jakarta.persistence.*;
+
+
+@Entity
+@Table(name = "posts")
+public class Post {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(unique = true, length = 100)
     private String title;
 
+    @Column(nullable = false, length = 1000)
     private String body;
 
-    public Post(){};
 
-    public Post(String title, String body){
-        this.title = title;
-        this.body = body;
-    }
 
     public String getTitle() {
         return title;
@@ -21,6 +27,14 @@ public class Post {
         this.title = title;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getBody() {
         return body;
     }
@@ -28,4 +42,6 @@ public class Post {
     public void setBody(String body) {
         this.body = body;
     }
+
+
 }

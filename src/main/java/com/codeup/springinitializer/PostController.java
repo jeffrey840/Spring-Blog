@@ -8,36 +8,44 @@ import org.springframework.ui.Model;
 @Controller
 public class PostController {
 
+    private final PostRepository postDao;
+
+    public PostController(PostRepository postDao){
+        this.postDao = postDao;
+    }
+
+
     @GetMapping("/posts")
-    public String allPosts(Model model){
-        ArrayList<Post> all = new ArrayList<>(2);
-        Post post1 = new Post("post #1 title", "post #1 body");
-        Post post2 = new Post("post #2 title", "post #2 body");
-        all.add(post1);
-        all.add(post2);
-        model.addAttribute("title", "All Posts");
-        model.addAttribute("allPosts", all);
+    public String postIndex(Model model){
+        model.addAttribute("posts", postDao.findAll());
+        model.addAttribute("title", "Post Index");
         return "posts/index";
     }
 
     @GetMapping(path = "/posts/{id}")
-    public String post(Model model){
-        Post post1 = new Post("post #1 title", "post #1 body");
+    public String viewPost(@PathVariable long id, Model model){
         model.addAttribute("title", "Individual Post");
-        model.addAttribute("postTitle", post1.getTitle());
-        model.addAttribute("postBody", post1.getBody());
+        model.addAttribute("post", postDao.findById(id));
+        Post post = postDao.getReferenceById(id);
+
+        model.addAttribute("postTitle", post.getTitle());
+        model.addAttribute("postBody", post.getBody());
+        model.addAttribute("postID", post.getId());
+
         return "posts/show";
     }
 
-    @RequestMapping(path = "/posts/create", method = RequestMethod.GET)
-    @ResponseBody
-    public String getCreate(){
-        return "This will pull the create a post page.";
+
+    @GetMapping(path = "/posts/create")
+    public String getCreate(Model model){
+        model.addAttribute("post", new Post());
+        return "posts/create";
     }
 
-    @RequestMapping(path = "/posts/create", method = RequestMethod.POST)
-    @ResponseBody
-    public String postCreate(){
-        return "This will post the create a post page.";
+    @PostMapping(path = "/posts/create")
+    public String postCreate(@ModelAttribute Post post){
+
+        postDao.save(post);
+        return "redirect:/posts";
     }
 }
