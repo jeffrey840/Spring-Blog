@@ -3,6 +3,8 @@ package com.codeup.springinitializer;
 import jakarta.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "users")
 public class User {
 
     @Id
@@ -19,7 +21,7 @@ public class User {
     @Column(unique = true, length = 100)
     private String password;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> blogPost;
 
     public Long getId() {

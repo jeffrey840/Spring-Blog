@@ -8,9 +8,11 @@ import org.springframework.ui.Model;
 @Controller
 public class PostController {
 
+    private final UserRepository userDao;
     private final PostRepository postDao;
 
-    public PostController(PostRepository postDao){
+    public PostController(PostRepository postDao,UserRepository userDao){
+        this.userDao = userDao;
         this.postDao = postDao;
     }
 
@@ -27,11 +29,12 @@ public class PostController {
         model.addAttribute("title", "Individual Post");
         model.addAttribute("post", postDao.findById(id));
         Post post = postDao.getReferenceById(id);
-
+        User user = userDao.getReferenceById(post.getUser().getId());
         model.addAttribute("postTitle", post.getTitle());
         model.addAttribute("postBody", post.getBody());
         model.addAttribute("postID", post.getId());
-
+        model.addAttribute("userEmail", user.getEmail());
+        model.addAttribute("user", user);
         return "posts/show";
     }
 
@@ -44,7 +47,7 @@ public class PostController {
 
     @PostMapping(path = "/posts/create")
     public String postCreate(@ModelAttribute Post post){
-
+        post.setUser(userDao.getReferenceById((long) 1));
         postDao.save(post);
         return "redirect:/posts";
     }

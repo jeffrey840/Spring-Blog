@@ -18,8 +18,8 @@ public class Post {
     private String body;
 
     @ManyToOne
+    @JoinColumn (name = "user_id")
     private User user;
-//
 
 
     public String getTitle() {
