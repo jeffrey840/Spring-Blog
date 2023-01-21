@@ -38,6 +38,23 @@ public class PostController {
         return "posts/show";
     }
 
+    @GetMapping(path = "/posts/edit/{id}")
+    public String getEdit(@PathVariable long id, Model model){
+        model.addAttribute("title", "Edit Post");
+        Post post = postDao.getReferenceById(id);
+        model.addAttribute("post", post);
+        return "posts/edit";
+    }
+
+    @PostMapping(path = "/posts/edit/{id}")
+    public String postEdit(@PathVariable long id, @RequestParam String title, @RequestParam String body){
+        Post post = postDao.getReferenceById(id);
+        post.setTitle(title);
+        post.setBody(body);
+        postDao.save(post);
+        return "redirect:/posts";
+    }
+
 
     @GetMapping(path = "/posts/create")
     public String getCreate(Model model){
