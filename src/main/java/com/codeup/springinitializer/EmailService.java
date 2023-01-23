@@ -1,2 +1,8 @@
-package com.codeup.springinitializer;public class EmailService {
+package com.codeup.springinitializer;
+
+
+import org.springframework.stereotype.Service;
+
+@Service("mailService")
+public class EmailService {
 }
