@@ -1,9 +1,11 @@
 package com.codeup.springinitializer;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import org.springframework.ui.Model;
+import org.springframework.stereotype.Service;
 
 @Controller
 public class PostController {
@@ -11,9 +13,13 @@ public class PostController {
     private final UserRepository userDao;
     private final PostRepository postDao;
 
-    public PostController(PostRepository postDao,UserRepository userDao){
+    private final EmailService emailService;
+
+    public PostController(PostRepository postDao,UserRepository userDao, EmailService emailService){
         this.userDao = userDao;
         this.postDao = postDao;
+        this.emailService = emailService;
+
     }
 
 
@@ -38,7 +44,7 @@ public class PostController {
         return "posts/show";
     }
 
-    @GetMapping(path = "/posts/edit/{id}")
+    @GetMapping(path = "/posts/{id}/edit")
     public String getEdit(@PathVariable long id, Model model){
         model.addAttribute("title", "Edit Post");
         Post post = postDao.getReferenceById(id);
@@ -46,7 +52,7 @@ public class PostController {
         return "posts/edit";
     }
 
-    @PostMapping(path = "/posts/edit/{id}")
+    @PostMapping(path = "/posts/{id}/edit")
     public String postEdit(@PathVariable long id, @RequestParam String title, @RequestParam String body){
         Post post = postDao.getReferenceById(id);
         post.setTitle(title);
@@ -64,7 +70,8 @@ public class PostController {
 
     @PostMapping(path = "/posts/create")
     public String postCreate(@ModelAttribute Post post){
-        post.setUser(userDao.getReferenceById((long) 1));
+        post.setUser(userDao.getReferenceById((1L)));
+        emailService.prepareAndSend(post, "Your latest blog post: " + post.getTitle(), "This is the body of your post!" + post.getBody());
         postDao.save(post);
         return "redirect:/posts";
     }

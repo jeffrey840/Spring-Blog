@@ -17,7 +17,7 @@
 		<form name="view" th:action="${'/posts/' + post.getId()}" method="get">
 			<button type="submit">View</button>
 		</form>
-		<form name="edit" th:action="${'/posts/edit/' + post.getId()}" method="get">
+		<form name="edit" th:action="${'/posts/' + post.getId() + '/edit'}" method="get">
 			<button type="submit">Edit</button>
 		</form>
 </div>
