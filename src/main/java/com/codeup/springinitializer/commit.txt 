@@ -7,3 +7,9 @@ user is then redirected to login where he can login
 user can create a new post
 ===post is submitted but get an error
 comment out "/* */"
+
+addsc create will redirect to login
+
+any user can see possts
+
+

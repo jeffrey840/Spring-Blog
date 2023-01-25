@@ -23,7 +23,7 @@ public class User {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> blogPost;
-/*
+
     public User() {
     }
 
@@ -41,7 +41,7 @@ public class User {
 //        this.email = email;
 //        this.password = password;
 //    }
-*/
+
     public Long getId() {
         return id;
     }

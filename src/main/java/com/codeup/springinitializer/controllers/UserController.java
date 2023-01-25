@@ -1,5 +1,5 @@
 package com.codeup.springinitializer.controllers;
-/*
+
 import com.codeup.springinitializer.models.User;
 import com.codeup.springinitializer.repositories.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -33,4 +33,4 @@ public class UserController {
         return "redirect:/login";
     }
 }
-*/
+

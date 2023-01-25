@@ -1,5 +1,5 @@
 package com.codeup.springinitializer;
-/*
+
 import com.codeup.springinitializer.services.UserDetailsLoader;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Bean;
@@ -40,7 +40,7 @@ public class SecurityConfiguration {
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
-/*
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -63,7 +63,8 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers(
                         "/posts/create",
-                        "/posts/{id}/edit"// only authenticated users can create ads
+                        "/posts/{id}/edit",// only authenticated users can create ads
+                        "/posts/{id}"
                 )
                 .authenticated()
         ;
@@ -71,39 +72,36 @@ public class SecurityConfiguration {
 
 }
 
+
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http
+//                /* Login configuration */
+//                .formLogin()
+//                .loginPage("/login")
+//                .defaultSuccessUrl("/ads") // user's home page, it can be any URL
+//                .permitAll() // Anyone can go to the login page
+//                /* Logout configuration */
+//                .and()
+//                .logout()
+//                .logoutSuccessUrl("/login?logout") // append a query string value
+//                /* Pages that can be viewed without having to log in */
+//                .and()
+//                .authorizeHttpRequests()
+//                .requestMatchers("/", "/ads") // anyone can see the home and the ads pages
+//                .permitAll()//anyone ayuthorized to make the request
+//                /* Pages that require authentication */
+//                .and()
+//                .authorizeHttpRequests()
+//                .requestMatchers(
+//                        "/ads/create", // only authenticated users can create ads
+//                        "/ads/{id}/edit" // only authenticated users can edit ads
+//                )
+//                .authenticated()
+//        ; return http.build();
+//    }
+
+
+
+
 }
-*/
-
-//        ====unComment above this====
-
-/*
-
-   @Override
-   protected void configure(HttpSecurity http) throws Exception {
-       http
-//               /* Login configuration */
-               .formLogin()
-                       .loginPage("/login")
-                       .defaultSuccessUrl("/ads") // user's home page, it can be any URL
-                       .permitAll() // Anyone can go to the login page
-                       /* Logout configuration */
-                       .and()
-                       .logout()
-                       .logoutSuccessUrl("/login?logout") // append a query string value
-                       /* Pages that can be viewed without having to log in */
-                       .and()
-                       .authorizeHttpRequests()
-                       .requestMatchers("/", "/ads") // anyone can see the home and the ads pages
-                       .permitAll()//anyone ayuthorized to make the request
-                       /* Pages that require authentication */
-                       .and()
-                       .authorizeHttpRequests()
-                       .requestMatchers(
-                       "/ads/create", // only authenticated users can create ads
-                       "/ads/{id}/edit" // only authenticated users can edit ads
-                       )
-                       .authenticated()
-                       ; return http.build();
-                       }
-
-* */
