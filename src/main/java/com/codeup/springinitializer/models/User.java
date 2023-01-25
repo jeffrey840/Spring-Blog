@@ -1,4 +1,4 @@
-package com.codeup.springinitializer;
+package com.codeup.springinitializer.models;
 
 import jakarta.persistence.*;
 import java.util.List;
@@ -18,12 +18,30 @@ public class User {
     @Column(unique = true, length = 100)
     private String email;
 
-    @Column(unique = true, length = 100)
+    @Column(length = 100)
     private String password;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> blogPost;
+/*
+    public User() {
+    }
 
+//    only sets the authentication things we need from the user
+    public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+    }
+
+//    public User(long id, String username, String email, String password) {
+//        this.id = id;
+//        this.username = username;
+//        this.email = email;
+//        this.password = password;
+//    }
+*/
     public Long getId() {
         return id;
     }

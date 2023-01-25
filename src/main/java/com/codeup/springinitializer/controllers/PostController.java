@@ -1,11 +1,14 @@
-package com.codeup.springinitializer;
+package com.codeup.springinitializer.controllers;
 
 
+import com.codeup.springinitializer.models.Post;
+import com.codeup.springinitializer.models.User;
+import com.codeup.springinitializer.repositories.PostRepository;
+import com.codeup.springinitializer.repositories.UserRepository;
+import com.codeup.springinitializer.services.EmailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import java.util.ArrayList;
 import org.springframework.ui.Model;
-import org.springframework.stereotype.Service;
 
 @Controller
 public class PostController {

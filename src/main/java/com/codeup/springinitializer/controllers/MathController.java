@@ -1,4 +1,4 @@
-package com.codeup.springinitializer;
+package com.codeup.springinitializer.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;

@@ -1,4 +1,4 @@
-package com.codeup.springinitializer;
+package com.codeup.springinitializer.models;
 
 
 import jakarta.persistence.*;

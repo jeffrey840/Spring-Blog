@@ -1,3 +1,5 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <nav th:fragment="navbar">
 	<ul>
 		<li><a href="/home">home</a></li>
@@ -5,5 +7,11 @@
 		<li><a href="/about">about</a></li>
 		<li><a href="/contact">contact</a></li>
 		<li><a href="/roll-dice">roll</a></li>
+
+<!--		<li>-->
+<!--			<form th:action="@{/logout}" th:method="post">-->
+<!--				<button class="btn-link btn" style="margin-top: 8px">Logout</button>-->
+<!--			</form>-->
+<!--		</li>-->
 	</ul>
 </nav>
