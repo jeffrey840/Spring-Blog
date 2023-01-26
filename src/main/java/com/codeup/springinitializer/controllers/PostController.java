@@ -72,14 +72,6 @@ public class PostController {
         return "posts/create";
     }
 
-//    @PostMapping(path = "/posts/create")
-//    public String postCreate(@ModelAttribute Post post){
-//        post.setUser(userDao.getReferenceById((1L)));
-//        emailService.prepareAndSend(post, "Your latest blog post: " + post.getTitle(), "This is the body of your post!" + post.getBody());
-//        postDao.save(post);
-////        (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()
-//        return "redirect:/posts";
-//    }
 
     @PostMapping(path = "/posts/create")
     public String postCreate(@ModelAttribute Post createdPost){
