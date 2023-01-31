@@ -58,6 +58,9 @@ public class SecurityConfiguration {
                         "/posts/create",
                         "/posts/{id}/edit",// only authenticated users can create ads
                         "/posts/{id}"
+//                         "/posts/{id}/delete",
+//                        "/posts/{id}",
+//                        "/logout"
                 )
                 .authenticated()
         ;

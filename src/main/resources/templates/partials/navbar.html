@@ -8,21 +8,26 @@
 		<li><a href="/contact">contact</a></li>
 		<li><a href="/roll-dice">roll</a></li>
 
-<!--		<li sec:authorize="isAuthenticated()">-->
-<!--			<form th:action="@{/logout}" th:method="post">-->
-<!--				<button class="btn-link btn" style="margin-top: 8px">Logout</button>-->
-<!--			</form>-->
-<!--		</li>-->
 	</ul>
 
 	<div sec:authorize="isAuthenticated()">
-		<form th:action="@{/logout}" th:method="POST">
-			<button class="btn-link btn" style="margin-top: 8px">Logout</button>
-		</form>
 		This content is only shown to authenticated users.
 		User ID: <span th:text="${#authentication.principal.id}"/>
 		Username: <span th:text="${#authentication.principal.username}"/>
 		Email: <span th:text="${#authentication.principal.email}"/>
 	</div>
+
+<!--	<div sec:authorize="!isAuthenticated()">-->
+<!--		This content is only shown to authenticated users who are not authenticated.-->
+<!--		<form th:action="@{/login}">-->
+<!--			<button class="btn-link btn" style="margin-top: 8px">login</button>-->
+<!--		</form>-->
+<!--	</div>-->
+
+<!--	<div sec:authorize="isAuthenticated()">-->
+<!--		<form th:action="@{/logout}" th:method="post">-->
+<!--			<button class="btn">Logout</button>-->
+<!--		</form>-->
+<!--	</div>-->
 
 </nav>
