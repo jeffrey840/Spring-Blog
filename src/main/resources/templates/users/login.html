@@ -14,7 +14,7 @@
   You have been logged out.
 </div>
 
-<form th:action="@{/login}" method="post">
+<form th:action="@{/login}" method="POST">
   <label for="username">Username</label>
   <input id="username" name="username" type="text" />
 
@@ -24,9 +24,9 @@
   <input type="submit" value="Log In" />
 </form>
 
-<!--<form th:action="@{/sign-up}">-->
-<!--  <button class="btn-link btn" style="margin-top: 8px">sign-up</button>-->
-<!--</form>-->
+<form th:action="@{/sign-up}">
+  <button class=" btn">sign-up</button>
+</form>
 
 </body>
 </html>

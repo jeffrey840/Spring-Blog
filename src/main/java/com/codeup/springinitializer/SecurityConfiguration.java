@@ -45,7 +45,8 @@ public class SecurityConfiguration {
                 /* Logout configuration */
                 .and()
                 .logout()
-                .logoutSuccessUrl("/login?logout") // append a query string value
+                .logoutSuccessUrl("/login?logout")
+//                .deleteCookies("JSESSIONID")// append a query string value
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeHttpRequests()
@@ -57,9 +58,9 @@ public class SecurityConfiguration {
                 .requestMatchers(
                         "/posts/create",
                         "/posts/{id}/edit",// only authenticated users can create ads
+//                        "/posts/{id}"
+                         "/posts/{id}/delete",
                         "/posts/{id}"
-//                         "/posts/{id}/delete",
-//                        "/posts/{id}",
 //                        "/logout"
                 )
                 .authenticated()
