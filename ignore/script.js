@@ -1,4 +1,3 @@
-
 // endpoints
 
 // returns the address/ img of the recently sold houses
@@ -28,24 +27,19 @@ const options = {
 
 // Returns 3 houses that are on sale
 // Each house has the address, price, and returns a zpid, the zpid will be used to make another fetch
-fetch('https://zillow-com1.p.rapidapi.com/propertyExtendedSearch?location=houston%20tx&page=1&status_type=ForSale&home_type=Houses&sort=Homes_for_You', options)
-	.then(response => response.json())
-	.then(response => {
-		console.log("===============================");
-		for(var i =0;i < 2;i++) {
-			console.log("address " + response.props[i].address)
-			console.log("price " +response.props[i]["price"])
-			console.log("this zpid will then make another fetch req " + response.props[i]["zpid"])
-			var zp_id = response.props[i]["zpid"]
-			console.log(zp_id);
-		}
-	}
-	)
-	.catch(err => console.error(err));
-// 305346418,28368180
 // fetch('https://zillow-com1.p.rapidapi.com/propertyExtendedSearch?location=houston%20tx&page=1&status_type=ForSale&home_type=Houses&sort=Homes_for_You', options)
 // 	.then(response => response.json())
-// 	.then(response => console.log(response))
+// 	.then(response => {
+// 		console.log("===============================");
+// 		for(var i =0;i < 3;i++) {
+// 			console.log("address " + response.props[i].address)
+// 			console.log("price " +response.props[i]["price"])
+// 			console.log("this zpid will then make another fetch req " + response.props[i]["zpid"])
+// 			var zp_id = response.props[i]["zpid"]
+// 			console.log(zp_id);
+// 		}
+// 	}
+// 	)
 // 	.catch(err => console.error(err));
 //
 // fetch('https://zillow-com1.p.rapidapi.com/images?zpid=' + `${zp_id}`, options)
