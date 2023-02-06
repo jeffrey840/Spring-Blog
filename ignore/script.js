@@ -42,6 +42,7 @@ const options = {
 // 	)
 // 	.catch(err => console.error(err));
 //
+// let zp_id = "28485710"
 // fetch('https://zillow-com1.p.rapidapi.com/images?zpid=' + `${zp_id}`, options)
 // 	.then(response => response.json())
 // 	.then(response => console.log(response))
@@ -49,4 +50,38 @@ const options = {
 
 // the user will only see the houses on sale
 // they get recommended a house based on the house being sold, the neighbors will be tied to sold listings
+
+
+
+
+myFunction();
+
+async function myFunction() {
+	let User_address = "houston"
+	// let User_address = document.getElementById("Uaddress").textContent
+	const response = await fetch('https://zillow-com1.p.rapidapi.com/propertyExtendedSearch?location='+`${User_address}`+'%20tx&page=1&status_type=ForSale&home_type=Houses&sort=Homes_for_You', options)
+	const data = await response.json();
+	const {props} = data
+
+	for(let i =0;i < 3;i++) {
+
+		addresses = props[i].address
+		zpid = props[i]["zpid"]
+		image = props[i]["imgSrc"]
+		console.log(addresses,zpid,image)
+
+
+		// this will print out the zpid along with the
+		// const response2 = await fetch('https://zillow-com1.p.rapidapi.com/images?zpid=' + `${zpid}`, options)
+		// const data2 = await response2.json();
+		// const {images} = data2
+		//
+		// for(var j =0;j < 2;j++) {
+		// 	zimg = images[j]
+		// 	console.log(zimg);
+		// }
+
+	}
+
+}
 
