@@ -14,7 +14,6 @@
   You have been logged out.
 </div>
 
-
 <div th:if="${message}" th:text="${message}" th:class="${alertClass}" th:value="${alertClass}"></div>
 <form th:action="@{/login}" method="POST">
   <label for="username">Username</label>

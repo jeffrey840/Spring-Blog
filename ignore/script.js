@@ -1,7 +1,7 @@
 // endpoints
 
 // returns the address/ img of the recently sold houses
-const R_k = ""
+const R_k = "4b79262d6emsh7cc3f4048fc7718p12b945jsndb86ef3ab993"
 
 const options = {
 	method: 'GET',
@@ -63,20 +63,19 @@ async function myFunction() {
 	const data = await response.json();
 	const {props} = data
 
-	for(let i =0;i < 3;i++) {
+	for(let i =0;i < 1;i++) {
 
 		addresses = props[i].address
 		zpid = props[i]["zpid"]
 		image = props[i]["imgSrc"]
 		console.log(addresses,zpid,image)
 
-
 		// this will print out the zpid along with the
 		// const response2 = await fetch('https://zillow-com1.p.rapidapi.com/images?zpid=' + `${zpid}`, options)
 		// const data2 = await response2.json();
 		// const {images} = data2
 		//
-		// for(var j =0;j < 2;j++) {
+		// for(var j =0;j < 5;j++) {
 		// 	zimg = images[j]
 		// 	console.log(zimg);
 		// }
