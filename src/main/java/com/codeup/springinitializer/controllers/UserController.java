@@ -51,21 +51,21 @@ public class UserController {
         return "redirect:/login";
     }
 
-    @PostMapping("/user/resetPassword")
-    public GenericResponse resetPassword(HttpServletRequest request,
-    @RequestParam("email") String userEmail) {
-        User user = userService.findUserByEmail(userEmail);
-        if (user == null) {
-            throw new UserNotFoundException();
-        }
-        String token = UUID.randomUUID().toString();
-        userService.createPasswordResetTokenForUser(user, token);
-        mailSender.send(constructResetTokenEmail(getAppUrl(request),
-                request.getLocale(), token, user));
-        return new GenericResponse(
-                messages.getMessage("message.resetPasswordEmail", null,
-                        request.getLocale()));
-    }
+//    @PostMapping("/user/resetPassword")
+//    public GenericResponse resetPassword(HttpServletRequest request,
+//    @RequestParam("email") String userEmail) {
+//        User user = userService.findUserByEmail(userEmail);
+//        if (user == null) {
+//            throw new UserNotFoundException();
+//        }
+//        String token = UUID.randomUUID().toString();
+//        userService.createPasswordResetTokenForUser(user, token);
+//        mailSender.send(constructResetTokenEmail(getAppUrl(request),
+//                request.getLocale(), token, user));
+//        return new GenericResponse(
+//                messages.getMessage("message.resetPasswordEmail", null,
+//                        request.getLocale()));
+//    }
 
 }
 
